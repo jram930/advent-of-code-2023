@@ -36,18 +36,18 @@ file.on('close', () => {
     index++;
   }
 
-  // Fill the in the last values
+  // Fill the in the first values
   for(let i=0; i<data.length; i++) {
     for(let j=data[i].length-1; j>0; j--) {
-      const diff = data[i][j][data[i][j].length-1];
-      const lastElem = data[i][j-1][data[i][j-1].length-1];
-      data[i][j-1].push(lastElem + diff);
+      const diff = data[i][j][0];
+      const firstElem = data[i][j-1][0];
+      data[i][j-1] = [(firstElem - diff), ...data[i][j-1]];
     }
   }
 
-  // Sum the last values
+  // Sum the first values
   for(let i=0; i<data.length; i++) {
-    sum += data[i][0][data[i][0].length-1];
+    sum += data[i][0][0];
   }
 
   console.log(sum);
